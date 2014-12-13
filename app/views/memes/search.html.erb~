@@ -15,6 +15,12 @@
 
     <title>Meme Low</title>
 
+  <form action="/donewsearch" method="post">
+  	<input type="text" name="itemtosearch" size = "40" placeholder="What do you want to find ?">
+  	<button type="submit">Search</button>
+  </form>
+</body>
+
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="jumbotron-narrow.css" rel="stylesheet">
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
