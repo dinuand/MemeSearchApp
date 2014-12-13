@@ -1,6 +1,20 @@
- class MemesController < ApplicationController
+ class MemesController < ActionController::Base
   before_action :set_meme, only: [:show, :edit, :update, :destroy]
 
+  def search
+    #DO NOTHING
+  end
+
+  def performsearch
+    #DO NOTHING
+    p params[:itemtosearch]
+    redirect_to '/searchresults'
+  end
+
+  def searchresults
+    render 'searchresults'
+  end
+ 
   # GET /memes
   # GET /memes.json
   def index
@@ -71,18 +85,5 @@
     def meme_params
       params.require(:meme).permit(:title, :keywords, :url, :rating)
     end
-
-  def search
-
-  end
-
-  def performsearch
-    
-    redirect_to '/new'
-  end
-
-  def searchresults
-
-  end
 
 end
