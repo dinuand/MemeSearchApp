@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/search' => 'memes#search'
   get '/searchresults' => 'memes#searchresults'
 
-  get '/donewsearch' => 'memes#performsearch'
+  post '/donewsearch' => 'memes#performsearch'
 
   resources :memes
 

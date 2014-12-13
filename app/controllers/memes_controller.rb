@@ -1,19 +1,18 @@
  class MemesController < ActionController::Base
   before_action :set_meme, only: [:show, :edit, :update, :destroy]
     
-  attr_reader :text
-
   def search
     #DO NOTHING
   end
 
   def performsearch
     #DO NOTHING
-    @text = params[:itemtosearch].to_s
-    # redirect_to '/searchresults'
+    session[:itemtosearch] = params[:itemtosearch]
+    redirect_to '/searchresults'
   end
 
   def searchresults
+    @texttosearch = session[:itemtosearch]
     render 'searchresults'
   end
  
