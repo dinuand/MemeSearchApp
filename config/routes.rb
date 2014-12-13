@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get '/search' => 'memes#search'
   get '/searchresults' => 'memes#searchresults'
 
-  post '/donewsearch' => 'memes#performsearch'
-  
+  get '/donewsearch' => 'memes#performsearch'
+
   resources :memes
 
   # The priority is based upon order of creation: first created -> highest priority.
