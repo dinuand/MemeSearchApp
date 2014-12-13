@@ -12,7 +12,10 @@
   end
 
   def searchresults
-    @texttosearch = session[:itemtosearch]
+    @raw_input = session[:itemtosearch].downcase
+    @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "");
+    @result = @sanitized_input.split(" ");
+    
     render 'searchresults'
   end
  
