@@ -1,4 +1,4 @@
-class MemesController < ApplicationController
+ class MemesController < ApplicationController
   before_action :set_meme, only: [:show, :edit, :update, :destroy]
 
   # GET /memes
@@ -71,4 +71,8 @@ class MemesController < ApplicationController
     def meme_params
       params.require(:meme).permit(:title, :keywords, :url, :rating)
     end
+
+  def search
+
+  end
 end
