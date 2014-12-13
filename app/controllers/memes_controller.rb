@@ -75,4 +75,14 @@
   def search
 
   end
+
+  def performsearch
+    
+    redirect_to '/new'
+  end
+
+  def searchresults
+
+  end
+
 end
