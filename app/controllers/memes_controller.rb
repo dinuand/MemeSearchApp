@@ -30,6 +30,7 @@
   # GET /memes/new
   def new
     @meme = Meme.new
+
   end
 
   # GET /memes/1/edit
@@ -40,6 +41,12 @@
   # POST /memes.json
   def create
     @meme = Meme.new(meme_params)
+
+    items = @meme.keywords.split(" ")
+    items.each do |item| 
+      attrs = { :key => item, :meme_id => @meme.id }
+      Keyword.create(attrs)
+    end
 
     respond_to do |format|
       if @meme.save
@@ -57,6 +64,11 @@
   def update
     respond_to do |format|
       if @meme.update(meme_params)
+        items = @meme.keywords.split(" ")
+        items.each do |item| 
+          attrs = { :key => item, :meme_id => @meme.id }
+          Keyword.create(attrs)
+        end
         format.html { redirect_to @meme, notice: 'Meme was successfully updated.' }
         format.json { render :show, status: :ok, location: @meme }
       else
