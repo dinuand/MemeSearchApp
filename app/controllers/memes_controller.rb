@@ -5,15 +5,17 @@
 
   def search
     #DO NOTHING
+    @color = ["blue", "red", "orange","green", "red" ,"gray", "blue"]
   end
 
   def performsearch
     #DO NOTHING
-    @text = params[:itemtosearch].to_s
-    # redirect_to '/searchresults'
+    session[:itemtosearch] = params[:itemtosearch]
+    redirect_to '/searchresults'
   end
 
   def searchresults
+    @text = session[:itemtosearch]
     render 'searchresults'
   end
  

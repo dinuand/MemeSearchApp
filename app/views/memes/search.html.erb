@@ -1,12 +1,62 @@
-<html>
-<body>
-  <meta charset="UTF-8">
-  <h2>Test</h2>
+<!DOCTYPE HTML>
+<html lang="en">
+	
+	<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-  <form action="/donewsearch" method="get">
-  	<input type="text" name="itemtosearch" size = "40" placeholder="What do you want to find ?">
-  	<button type="submit">Search</button>
-  </form>
-</body>
+    <title>Meme Low</title>
 
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+ </head>
+
+	<body>
+
+
+
+		<div class ="container">
+			<div class="SiteNameArea" style="position:absolute; top:25%; left:34.5%;">
+				<h1 style="font-family:Catull; font-size:135px;">
+				<font color="<%=@color[0]%>">M</font><font color="<%=@color[1]%>">e</font><font color="<%=@color[2]%>">m</font><font color="<%=@color[3]%>">e</font><font color="<%=@color[4]%>">L</font><font color="<%=@color[5]%>">a</font><font color="<%=@color[6]%>">w</font>
+				</h1>
+			</div>
+
+			<div class="Quotes" style="position:absolute; top:41%; left:44.3%;">
+				<h3 style="font-family=Catull; font-size:20px;">
+					<font color="gray">
+						<i>The Google of memes</i>
+					</font>
+				</h3>
+			</div>
+
+			<div style="position:absolute; top:50%; left:32%;">
+				<div class="row-fluid">
+				  	<div class="span4 offset4 text-center">
+				    	<form action="/donewsearch" method="post">
+							<input class="form-control input-lg" id="inputlg" type="text" name="itemtosearch" size="75" placeholder="What memes are you looking for ?">
+							<br>
+							<button type="submit" class="btn btn-lg btn-default">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"> Search</span>
+							</button>
+						</form>
+				  	</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
 </html>
