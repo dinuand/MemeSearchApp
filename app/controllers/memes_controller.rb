@@ -45,16 +45,14 @@
   # POST /memes.json
   def create
     @meme = Meme.new(meme_params)
-
-    items = @meme.keywords.split(" ")
-    items.each do |item| 
-      attrs = { :key => item, :meme_id => @meme.id }
-      Keyword.create(attrs)
-    end
-
     respond_to do |format|
       if @meme.save
-        format.html { redirect_to @meme, notice: 'Meme was successfully created.' }
+        items = @meme.keywords.split(" ")
+        items.each do |item| 
+          attrs = { :key => item, :meme_id => @meme.id }
+          Keyword.create(attrs)
+        end
+        format.html { redirect_to @meme, notice: 'Meme was successfully created. Keywords were successfully added' }
         format.json { render :show, status: :created, location: @meme }
       else
         format.html { render :new }
