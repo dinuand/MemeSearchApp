@@ -34,7 +34,7 @@
     @vector_to_sort.sort! { |a, b|  b[1] <=> a[1] }
 
     
-    @results = Meme.find(@vector_to_sort.map { |innervector| innervector[0]})
+    @results = Meme.find(@vector_to_sort.map { |innervector| innervector[0]}).reverse
     render 'searchresults'
   end
  
