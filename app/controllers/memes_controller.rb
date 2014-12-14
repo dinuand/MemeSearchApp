@@ -13,13 +13,26 @@
   end
 
   def searchresults
+
     @raw_input = session[:itemtosearch].downcase
-    @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "");
-    @result = @sanitized_input.split(" ");
+    @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "")
+    @result = @sanitized_input.split(" ")
+    @VObj = []
     @result.each do |item|
-      @tmp = Keyword.find_by(:key => item).memes
-      p @tmp
+      @tmp = Keyword.where(:key => item).map(&:memes).flat_map {|i| i }
+      @tmp.each do |el|
+        @VObj << el.id
+      end
     end
+    h = Hash.new
+    @VObj.each do |entry|
+      h[entry] = h[entry].to_i + 1;
+    end  
+
+    @vector_to_sort = h.to_a
+    @vector_to_sort.sort! { |a, b|  b[1] <=> a[1] }
+
+
     render 'searchresults'
   end
  
