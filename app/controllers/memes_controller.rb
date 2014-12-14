@@ -18,6 +18,7 @@
     @result = @sanitized_input.split(" ");
     @result.each do |item|
       @tmp = Keyword.find_by(:key => item).memes
+      p @tmp
     end
     render 'searchresults'
   end
