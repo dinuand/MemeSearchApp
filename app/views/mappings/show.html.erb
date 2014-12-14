@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Meme:</strong>
+  <%= @mapping.meme_id %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @mapping.keyword_id %>
+</p>
+
+<%= link_to 'Edit', edit_mapping_path(@mapping) %> |
+<%= link_to 'Back', mappings_path %>

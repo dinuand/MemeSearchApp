@@ -11,17 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214093237) do
+ActiveRecord::Schema.define(version: 20141213170105) do
 
   create_table "keywords", force: true do |t|
     t.string   "key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mappings", force: true do |t|
     t.integer  "meme_id"
-    t.integer  "keyword_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,13 +28,5 @@ ActiveRecord::Schema.define(version: 20141214093237) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "memes", ["keywords"], name: "index_on_memes_keywords"
-  add_index "memes", ["rating"], name: "index_on_memes_rating"
-  add_index "memes", ["title"], name: "index_on_memes_titles"
-  add_index "memes", ["url", "keywords"], name: "unique_index_on_url_and_keywords", unique: true
-  add_index "memes", ["url", "rating"], name: "unique_index_on_url_and_rating", unique: true
-  add_index "memes", ["url", "title"], name: "unique_index_on_url_and_title", unique: true
-  add_index "memes", ["url"], name: "index_on_memes_url"
 
 end

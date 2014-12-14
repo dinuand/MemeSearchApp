@@ -13,13 +13,28 @@
   end
 
   def searchresults
-    @raw_input = session[:itemtosearch].downcase
-    @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "");
-    @result = @sanitized_input.split(" ");
 
-    @results = Meme.all;
-    
-    
+    @raw_input = session[:itemtosearch].downcase
+
+    @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "")
+    @result = @sanitized_input.split(" ")
+    @VObj = []
+    @result.each do |item|
+      @tmp = Keyword.where(:key => item).map(&:memes).flat_map {|i| i }
+      @tmp.each do |el|
+        @VObj << el.id
+      end
+    end
+    h = Hash.new
+    @VObj.each do |entry|
+      h[entry] = h[entry].to_i + 1;
+    end  
+
+    @vector_to_sort = h.to_a
+    @vector_to_sort.sort! { |a, b|  b[1] <=> a[1] }
+
+
+
     render 'searchresults'
   end
  
@@ -48,16 +63,17 @@
   # POST /memes.json
   def create
     @meme = Meme.new(meme_params)
-
-    items = @meme.keywords.split(" ")
-    items.each do |item| 
-      attrs = { :key => item, :meme_id => @meme.id }
-      Keyword.create(attrs)
-    end
-
     respond_to do |format|
       if @meme.save
-        format.html { redirect_to @meme, notice: 'Meme was successfully created.' }
+        items = @meme.keywords_string.split(" ")
+        items.each do |item| 
+          attrs = { :key => item }
+          @keyword = Keyword.new(attrs)
+          if @keyword.save
+            Mapping.create(:meme_id => @meme.id, :keyword_id => @keyword.id)
+          end
+        end
+        format.html { redirect_to @meme, notice: 'Meme was successfully created. Keywords were successfully added' }
         format.json { render :show, status: :created, location: @meme }
       else
         format.html { render :new }
@@ -71,10 +87,13 @@
   def update
     respond_to do |format|
       if @meme.update(meme_params)
-        items = @meme.keywords.split(" ")
+        items = @meme.keywords_string.split(" ")
         items.each do |item| 
-          attrs = { :key => item, :meme_id => @meme.id }
-          Keyword.create(attrs)
+          attrs = { :key => item}
+          @keyword = Keyword.new(attrs)
+          if @keyword.save
+            Mapping.create(:meme_id => @meme.id, :keyword_id => @keyword.id)
+          end
         end
         format.html { redirect_to @meme, notice: 'Meme was successfully updated.' }
         format.json { render :show, status: :ok, location: @meme }
@@ -103,7 +122,9 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meme_params
-      params.require(:meme).permit(:title, :keywords, :url, :rating)
+      params.require(:meme).permit(:title, :keywords_string, :url, :rating)
     end
 
 end
+
+# Meme.last.keywords.map(&:key).join(' ')

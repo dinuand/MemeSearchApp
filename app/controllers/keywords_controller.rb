@@ -55,7 +55,10 @@ class KeywordsController < ActionController::Base
   # DELETE /keywords/1.json
   def destroy
     @keyword.destroy
-    redirect_to '/keywords'
+    respond_to do |format|
+      format.html { redirect_to keywords_url, notice: 'Keyword was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -66,6 +69,6 @@ class KeywordsController < ActionController::Base
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def keyword_params
-      params.require(:keyword).permit(:key, :meme_id)
+      params.require(:keyword).permit(:key)
     end
 end
