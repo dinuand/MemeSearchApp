@@ -1,1 +1,1 @@
-json.extract! @keyword, :id, :key, :meme_id, :created_at, :updated_at
+json.extract! @keyword, :id, :key=string, :created_at, :updated_at

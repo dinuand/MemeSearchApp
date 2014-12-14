@@ -15,7 +15,7 @@
     <% @memes.each do |meme| %>
       <tr>
         <td><%= meme.title %></td>
-        <td><%= meme.keywords %></td>
+        <td><%= meme.keywords_string %></td>
         <td><%= meme.url %></td>
         <td><%= meme.rating %></td>
         <td><%= link_to 'Show', meme %></td>

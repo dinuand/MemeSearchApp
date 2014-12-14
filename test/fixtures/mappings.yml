@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  key=string: MyString
+  meme_id: 1
+  keyword_id: 1
 
 two:
-  key=string: MyString
+  meme_id: 1
+  keyword_id: 1

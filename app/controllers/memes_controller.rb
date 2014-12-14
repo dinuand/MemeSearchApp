@@ -16,7 +16,9 @@
     @raw_input = session[:itemtosearch].downcase
     @sanitized_input = @raw_input.gsub(/[^a-zA-Z0-9 ]/, "");
     @result = @sanitized_input.split(" ");
-    
+    @result.each do |item|
+      @tmp = Keyword.find_by(:key => item).memes
+    end
     render 'searchresults'
   end
  
@@ -47,10 +49,13 @@
     @meme = Meme.new(meme_params)
     respond_to do |format|
       if @meme.save
-        items = @meme.keywords.split(" ")
+        items = @meme.keywords_string.split(" ")
         items.each do |item| 
-          attrs = { :key => item, :meme_id => @meme.id }
-          Keyword.create(attrs)
+          attrs = { :key => item }
+          @keyword = Keyword.new(attrs)
+          if @keyword.save
+            Mapping.create(:meme_id => @meme.id, :keyword_id => @keyword.id)
+          end
         end
         format.html { redirect_to @meme, notice: 'Meme was successfully created. Keywords were successfully added' }
         format.json { render :show, status: :created, location: @meme }
@@ -66,10 +71,13 @@
   def update
     respond_to do |format|
       if @meme.update(meme_params)
-        items = @meme.keywords.split(" ")
+        items = @meme.keywords_string.split(" ")
         items.each do |item| 
-          attrs = { :key => item, :meme_id => @meme.id }
-          Keyword.create(attrs)
+          attrs = { :key => item}
+          @keyword = Keyword.new(attrs)
+          if @keyword.save
+            Mapping.create(:meme_id => @meme.id, :keyword_id => @keyword.id)
+          end
         end
         format.html { redirect_to @meme, notice: 'Meme was successfully updated.' }
         format.json { render :show, status: :ok, location: @meme }
@@ -98,7 +106,9 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meme_params
-      params.require(:meme).permit(:title, :keywords, :url, :rating)
+      params.require(:meme).permit(:title, :keywords_string, :url, :rating)
     end
 
 end
+
+# Meme.last.keywords.map(&:key).join(' ')

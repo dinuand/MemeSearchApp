@@ -18,7 +18,7 @@ class KeywordsControllerTest < ActionController::TestCase
 
   test "should create keyword" do
     assert_difference('Keyword.count') do
-      post :create, keyword: { key: @keyword.key, meme_id: @keyword.meme_id }
+      post :create, keyword: { key=string: @keyword.key=string }
     end
 
     assert_redirected_to keyword_path(assigns(:keyword))
@@ -35,7 +35,7 @@ class KeywordsControllerTest < ActionController::TestCase
   end
 
   test "should update keyword" do
-    patch :update, id: @keyword, keyword: { key: @keyword.key, meme_id: @keyword.meme_id }
+    patch :update, id: @keyword, keyword: { key=string: @keyword.key=string }
     assert_redirected_to keyword_path(assigns(:keyword))
   end
 
