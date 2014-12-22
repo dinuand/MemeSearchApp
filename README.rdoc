@@ -4,4 +4,8 @@ If you have a passion for memes and want to quickly find the ones you like the m
 
 == Requirements
 
-<tt>rake doc:app</tt>.
+* Install all the requirements listed here: https://github.com/dserban/WebDevCourseMaterials/tree/master/0-installing-rvm
+
+* Run *bundle install* on your terminal.
+
+* Enjoy searching memes through our database.
