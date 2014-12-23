@@ -1,51 +1,64 @@
 <!DOCTYPE HTML>
 <html lang="en">
-	
-	<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
     <title>Meme Law</title>
- 	</head>
-
-	<body>
-		<div class="container">
-			<div class="header" style="width:100%; background:white; height:150px;">
-
-			</div>
-			<div class="SiteNameArea" style="position:relative; top:100px; left:23%;">
-				<h1 style="font-family:Catull; font-size:135px;">
-				<font color="<%=@color[0]%>">M</font><font color="<%=@color[1]%>">e</font><font color="<%=@color[2]%>">m</font><font color="<%=@color[3]%>">e</font><font color="<%=@color[4]%>">L</font><font color="<%=@color[5]%>">a</font><font color="<%=@color[6]%>">w</font>
-				</h1>
-			</div>
-
-			<div class="Quotes" style="position:absolute; top:41%; left:44.2%;">
-				<h3 style="font-family=Catull; font-size:20px;">
-					<font color="gray">
-						<i>The Google of memes</i>
-					</font>
-				</h3>
-			</div>
-			
-				<div style="position:absolute; top:50%; left:32%;">
-					<div class="row-fluid">
-					  	<div class="span4 offset4 text-center">
-					    	<form action="/donewsearch" method="post">
-								<input class="form-control input-lg" id="inputlg" type="text" name="itemtosearch" size="75" placeholder="What memes are you looking for ?">
-								<br>
-								<button type="submit" class="btn btn-lg btn-default">
-									<span class="glyphicon glyphicon-search" aria-hidden="true">Search</span>
-								</button>
-							</form>
-					  	</div>
-					</div>
-				</div>
-			<!--/div-->
-			
-
-		</div>
-	</body>
+    <style>
+      .padded {
+          padding: 10px;
+      }
+      html, body{height:100%; margin:0;padding:0}
+      .container-fluid{
+        height:80%;
+        display:table;
+        width: 100%;
+        padding: 0;
+      }
+      .row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+      .centering {
+        float:none;
+        margin:0 auto;
+      }
+      @media (max-width: 768px) {
+        .vertical-center:before {
+          height: auto;
+          /*/* Or */
+          /*display: none;*/
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="centering text-center">
+          <div class="container">
+            <div class="SiteNameArea">
+              <h1 style="font-family:Catull; font-size:90px;">
+              <font color="<%=@color[0]%>">M</font><font color="<%=@color[1]%>">e</font><font color="<%=@color[2]%>">m</font><font color="<%=@color[3]%>">e</font><font color="<%=@color[4]%>">L</font><font color="<%=@color[5]%>">a</font><font color="<%=@color[6]%>">w</font>
+              </h1>
+              <div class="Quotes text-centered">
+                <h3 style="font-family=Catull; font-size:17px;">
+                  <font color="gray">
+                    <i>The Google for memes :)</i>
+                  </font>
+                </h3>
+              </div>
+              <form action="/donewsearch" method="post">
+                <input class="form-control input-sm" id="inputsm" type="text" name="itemtosearch" placeholder="Ce fel de meme-uri doriți să căutați ?">
+                <br>
+                <p>
+                  <button type="submit" class="btn btn-default btn-sm"><b>Căutare meme<b></button>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
