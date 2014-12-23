@@ -1,28 +1,11 @@
-== README
+== MemeSearchApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+If you have a passion for memes and want to quickly find the ones you like the most, try our Rails app.
 
-Things you may want to cover:
+== Requirements
 
-* Ruby version
+* Install all the requirements listed here: https://github.com/dserban/WebDevCourseMaterials/tree/master/0-installing-rvm
 
-* System dependencies
+* Run *bundle install* on your terminal.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Enjoy searching memes through our database.
