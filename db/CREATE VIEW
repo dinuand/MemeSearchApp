@@ -1,0 +1,13 @@
+CREATE VIEW
+	augmented_keywords
+AS
+	keywords.key, memes.id
+FROM
+	keywords,
+	mappings,
+	memes
+WHERE
+	mappings.keyword_id = keywords.id
+	AND
+	mappings.meme_id = memes.id
+;
